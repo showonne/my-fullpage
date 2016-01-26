@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+        .fullpage-cover{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+        .wrapper{
+            height: 100%;
+            /*width: 100%;*/
+        }
+        .section1{
+            background: #673AB7;
+        }
+        .section2{
+            background: #5677FC;
+        }
+        .section3{
+            background: #8BC34A;
+        }
+    </style>
+</head>
+<body>
+    <div class="fullpage-cover">
+        <div class='wrapper'>
+            <div class="section section1">page1</div>
+            <div class="section section2">page2</div>
+            <div class="section section3">page3</div>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            FullPage({
+                animateDuration: 1000,
+                animateType: 'ease-in',
+                afterLoad: function(index){
+                    console.log('current page is ', index)
+                }
+            })
+        }
+    </script>
+    <script src = 'fullpage.js'></script>
+    <script src='index.js'></script>
+</body>
+</html>
