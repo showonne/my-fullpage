@@ -5,7 +5,15 @@
         if(Object.prototype.toString.call(options) !== "[object Object]"){
             throw new Error('FullPage\'s options should be a object.')
         }
-
+        
+        var cover = document.querySelector('.fullpage-cover')
+        cover.style.position = 'absolute'
+        cover.style.top = 0
+        cover.style.bottom = 0
+        cover.style.left = 0
+        cover.style.right = 0
+        cover.style.overflow = 'hidden'
+        
         var defaultOptions = {
             animateDuration: 500,
             animateType: 'ease',
@@ -30,6 +38,12 @@
             $wrapper.style.transition = 'all ' + computedOptions.animateDuration + 'ms ' + computedOptions.animateType
 
             console.log(computedOptions)
+            
+            Array.prototype.forEach.call($children, function(item, index){
+                item.style.position = 'relative'
+                item.style.overflow = 'hidden'
+            })
+            
             for(var i = 0, len = $children.length; i < len; i++){
                 $children[i].style.height = clientHeight + 'px'
                 $children[i].style.width = clientWidth + 'px'
@@ -71,6 +85,7 @@
         window.addEventListener('resize', _initStyle)
 
         _initStyle();
+        computedOptions.afterLoad.call(null, 0)
     }
 
     window.FullPage = FullPage
